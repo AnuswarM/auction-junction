@@ -1,0 +1,26 @@
+.navbar {
+  background-color: #bbe1fa !important;
+  margin: 10px;
+  padding: 0;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+}
+
+body {
+  background-color: #bbe1fa;
+  font-size: large;
+}
+
+.container-fluid {
+    margin-right: 2vw;
+}
+
+.navbar-brand {
+    font-size: 3rem;
+}
+
+.nav-link {
+    font-size: 2rem;
+    padding: 20px!important;
+}
