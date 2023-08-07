@@ -1,4 +1,5 @@
 import React from "react";
+import Logo from "./images/logo-no-background.png";
 
 function Navbar() {
   return (
@@ -6,7 +7,7 @@ function Navbar() {
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
-            Auction Junction
+            <img src={Logo} id="main-logo"/>
           </a>
           <button
             className="navbar-toggler"

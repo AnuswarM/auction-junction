@@ -2,9 +2,9 @@
   background-color: #bbe1fa !important;
   margin: 10px;
   padding: 0;
-  position: fixed; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
-  width: 100%; /* Full width */
+  position: sticky; 
+  top: 0;
+  width: 100%; 
 }
 
 body {
@@ -23,4 +23,17 @@ body {
 .nav-link {
     font-size: 2rem;
     padding: 20px!important;
+}
+
+#main-logo {
+  height: 10rem;
+  width: 10rem;
+}
+
+footer .nav-link{
+  font-size: 1.2rem;
+}
+
+.copyright-text {
+  font-size: 1.2rem;
 }
