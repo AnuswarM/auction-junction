@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-function Login() {
+function Signup() {
   const [user, setUser] = useState({});
 
   function handleChange(event) {
@@ -15,11 +15,11 @@ function Login() {
     });
   }
 
-  function handleSignIn(event) {
+  function handleSignup(event) {
     event.preventDefault();
     console.log(user);
     axios
-      .post("/signin", user)
+      .post("/signup", user)
       .then((response) => console.log(response))
       .catch((err) => console.log(err));
   }
@@ -36,14 +36,37 @@ function Login() {
             />
           </div>
           <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-            <form onSubmit={handleSignIn}>
+            <form onSubmit={handleSignup}>
+              <div className="form-outline mb-4">
+                <input
+                  type="email"
+                  className="form-control form-control-lg"
+                  placeholder="Email Address"
+                  name="email"
+                  value={user.email}
+                  onChange={handleChange}
+                />
+              </div>
+
               <div className="form-outline mb-4">
                 <input
                   type="text"
                   className="form-control form-control-lg"
-                  placeholder="Email Address"
+                  placeholder="User Name"
                   name="username"
                   value={user.username}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div className="form-outline mb-4">
+                <input
+                  type="tel"
+                  className="form-control form-control-lg"
+                  placeholder="Phone Number"
+                  pattern="[0-9]{10}"
+                  name="phone"
+                  value={user.phone}
                   onChange={handleChange}
                 />
               </div>
@@ -62,7 +85,7 @@ function Login() {
                 type="submit"
                 className="btn btn-primary btn-lg btn-block"
               >
-                Sign in
+                Sign Up
               </button>
             </form>
           </div>
@@ -72,4 +95,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Signup;
