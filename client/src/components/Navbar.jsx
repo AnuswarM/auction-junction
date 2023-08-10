@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Logo from "./images/logo-no-background.png";
 
 function Navbar() {
@@ -6,9 +7,9 @@ function Navbar() {
     <div className="main-navbar">
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">
-            <img src={Logo} id="main-logo"/>
-          </a>
+          <Link className="navbar-brand" to="/">
+            <img src={Logo} id="main-logo" />
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -22,21 +23,24 @@ function Navbar() {
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav ms-auto">
-              <a className="nav-link" href="#">
-                Lots
-              </a>
-              <a className="nav-link" href="#">
+              <Link className="nav-link" to="/addproduct">
+                Sell Products
+              </Link>
+              <Link className="nav-link" to="/">
+                Your Products
+              </Link>
+              <Link className="nav-link" to="/">
                 Bid and Buy
-              </a>
-              <a className="nav-link" href="#">
+              </Link>
+              <Link className="nav-link" to="/">
                 Bid Status
-              </a>
-              <a className="nav-link" href="#">
+              </Link>
+              <Link className="nav-link" to="/">
                 About
-              </a>
-              <a className="nav-link" href="#">
+              </Link>
+              <Link className="nav-link" to="/">
                 Profile
-              </a>
+              </Link>
             </div>
           </div>
         </div>

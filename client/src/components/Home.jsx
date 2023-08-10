@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 import Auction1 from "./images/auction1.png";
 
 function Home() {
@@ -26,9 +27,9 @@ function Home() {
                   products and services online.
                 </h2>
                 <div className="mt-3">
-                  <a href="/signup" className="btn-get-started">
+                  <Link to="/login" className="btn-get-started">
                     Get Started
-                  </a>
+                  </Link>
                 </div>
               </div>
 
