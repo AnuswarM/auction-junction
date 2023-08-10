@@ -1,11 +1,10 @@
 import axios from "axios";
 import React from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
 function AddProduct() {
-  const userLoggedIn = useSelector((state) => state.authStatus);
+  const userLoggedIn = window.localStorage.getItem("isLoggedIn");
   const [product, setProduct] = useState({});
   const [images, setImages] = useState([]);
 

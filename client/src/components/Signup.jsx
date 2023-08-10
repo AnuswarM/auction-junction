@@ -20,7 +20,9 @@ function Signup() {
     console.log(user);
     axios
       .post("/signup", user)
-      .then((response) => console.log(response))
+      .then((response) => {
+        window.localStorage.setItem("isLoggedIn", true);
+      })
       .catch((err) => console.log(err));
   }
 

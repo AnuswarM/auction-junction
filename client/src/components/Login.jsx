@@ -1,17 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-import * as actionCreators from "../actions/userAuthAction";
-import { useDispatch } from "react-redux";
-import { bindActionCreators } from "redux";
 
 function Login() {
   const [user, setUser] = useState({});
-
-  const dispatch = useDispatch();
-  const { userLogin } = bindActionCreators(
-    actionCreators,
-    dispatch
-  );
 
   function handleChange(event) {
     const { value, name } = event.target;
@@ -29,7 +20,9 @@ function Login() {
     axios
       .post("/signin", user)
       .then((response) => {
-        if (response.status === 200) userLogin();
+        if (response.status === 200) {
+          window.localStorage.setItem("isLoggedIn", true);
+        }
       })
       .catch((err) => console.log(err));
   }
