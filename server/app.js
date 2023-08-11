@@ -100,25 +100,39 @@ app.route("/addproduct").post(async (req, res) => {
 
   const images = req.body.images;
   imageLinks = [];
-  try {
-    images.forEach(async (image) => {
-      const result = await cloudinary.v2.uploader.upload(image, {
-        folder: "products",
-      });
 
-      imageLinks.push({
-        public_id: result.public_id,
-        url: result.url,
-      });
-
-      product.images = imageLinks;
-      await product.save();
+  for (let i = 0; i < images.length; i++) {
+    const result = await cloudinary.v2.uploader.upload(images[i], {
+      folder: "products",
     });
+
+    imageLinks.push({
+      public_id: result.public_id,
+      url: result.secure_url,
+    });
+
+    product.images = imageLinks;
+  }
+
+  try {
+    await product.save();
+    res.status(200).send("Successfully added.");
   } catch (error) {
     console.log(error);
   }
+});
 
-  res.status(200).send("Call Recieved");
+app.route("/products").get((req, res) => {
+  Product.find({}).populate("seller")
+    .then((products) => res.status(200).send(products))
+    .catch((err) => console.log(err));
+});
+
+app.route("/logout").get((req, res) => {
+  req.logout((err) => {
+    if (err) console.log(err);
+    else res.status(200).send("Logged Out Successfully.");
+  });
 });
 
 app.route("/isAuthenticated").get((req, res) => {

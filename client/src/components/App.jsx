@@ -4,8 +4,10 @@ import Home from "./Home";
 import Login from "./Login";
 import Signup from "./Signup";
 import AddProduct from "./AddProduct";
+import BidAndBuy from "./BidAndBuy";
 import Footer from "./Footer";
 import { Routes, Route } from "react-router-dom";
+import Profile from "./Profile";
 
 const Routing = () => {
   return (
@@ -15,6 +17,9 @@ const Routing = () => {
       <Route path="/signup" element={<Signup />} />
 
       <Route path="/addproduct" element={<AddProduct />} />
+      <Route path="/bidandbuy" element={<BidAndBuy />} />
+
+      <Route path="/profile" element={<Profile />} />
     </Routes>
   );
 };

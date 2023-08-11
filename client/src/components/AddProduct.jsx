@@ -5,7 +5,12 @@ import { Navigate } from "react-router-dom";
 
 function AddProduct() {
   const userLoggedIn = window.localStorage.getItem("isLoggedIn");
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState({
+    name: "",
+    price: "",
+    description: "",
+    endDate: new Date().toJSON().slice(0, 10),
+  });
   const [images, setImages] = useState([]);
 
   function handleTextChange(event) {

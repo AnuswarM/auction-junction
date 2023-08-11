@@ -107,3 +107,7 @@ footer .nav-link {
   }
 }
 
+.product-card {
+  color: #000;
+  text-decoration: none;
+}

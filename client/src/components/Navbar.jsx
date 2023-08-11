@@ -29,7 +29,7 @@ function Navbar() {
               <Link className="nav-link" to="/">
                 Your Products
               </Link>
-              <Link className="nav-link" to="/">
+              <Link className="nav-link" to="/bidandbuy ">
                 Bid and Buy
               </Link>
               <Link className="nav-link" to="/">
@@ -38,7 +38,7 @@ function Navbar() {
               <Link className="nav-link" to="/">
                 About
               </Link>
-              <Link className="nav-link" to="/">
+              <Link className="nav-link" to="/profile">
                 Profile
               </Link>
             </div>

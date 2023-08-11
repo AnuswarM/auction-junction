@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
 function Signup() {
+  const navigate = useNavigate();
   const [user, setUser] = useState({});
 
   function handleChange(event) {
@@ -22,6 +24,7 @@ function Signup() {
       .post("/signup", user)
       .then((response) => {
         window.localStorage.setItem("isLoggedIn", true);
+        navigate("/bidandbuy");
       })
       .catch((err) => console.log(err));
   }
@@ -83,6 +86,9 @@ function Signup() {
                   onChange={handleChange}
                 />
               </div>
+              <p>
+                Already have an account? <Link to="/login">Login</Link>
+              </p>
               <button
                 type="submit"
                 className="btn btn-primary btn-lg btn-block"
