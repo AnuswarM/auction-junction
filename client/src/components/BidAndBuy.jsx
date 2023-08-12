@@ -4,7 +4,7 @@ import axios from "axios";
 import Product from "./Product";
 
 function BidAndBuy() {
-  const userLoggedIn = window.localStorage.getItem("isLoggedIn");
+  const userLoggedIn = window.sessionStorage.getItem("isLoggedIn");
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -18,8 +18,8 @@ function BidAndBuy() {
     return (
       <div className="container py-5">
         <div className="row">
-          {products.map((product) => (
-            <Product product={product} />
+          {products.map((product, index) => (
+            <Product product={product} key={index}/>
           ))}
         </div>
       </div>

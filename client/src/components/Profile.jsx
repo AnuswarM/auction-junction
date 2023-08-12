@@ -3,13 +3,13 @@ import React from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 
 function Profile() {
-  const userLoggedIn = window.localStorage.getItem("isLoggedIn");
+  const userLoggedIn = window.sessionStorage.getItem("isLoggedIn");
   const navigate = useNavigate();
 
   function handleLogOut() {
     axios.get("/logout").then((response) => {
       if (response.status === 200) {
-        window.localStorage.removeItem("isLoggedIn");
+        window.sessionStorage.removeItem("isLoggedIn");
         navigate("/");
       }
     });

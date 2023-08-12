@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Navigate } from "react-router-dom";
 
 function AddProduct() {
-  const userLoggedIn = window.localStorage.getItem("isLoggedIn");
+  const userLoggedIn = window.sessionStorage.getItem("isLoggedIn");
   const [product, setProduct] = useState({
     name: "",
     price: "",

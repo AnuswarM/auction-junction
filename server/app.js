@@ -123,8 +123,19 @@ app.route("/addproduct").post(async (req, res) => {
 });
 
 app.route("/products").get((req, res) => {
-  Product.find({}).populate("seller")
+  Product.find({})
+    .populate("seller")
     .then((products) => res.status(200).send(products))
+    .catch((err) => console.log(err));
+});
+
+app.route("/products/:id").get((req, res) => {
+  console.log(req.params);
+  const id = req.params.id;
+
+  Product.findOne({ _id: id })
+    .populate("seller")
+    .then((response) => res.status(200).send(response))
     .catch((err) => console.log(err));
 });
 

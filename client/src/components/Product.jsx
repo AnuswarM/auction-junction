@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 function Product(props) {
   return (
     <div className="col-md-12 col-lg-4 mb-4 mb-lg-0">
@@ -9,7 +10,7 @@ function Product(props) {
           src={props.product.images[0].url}
           className="card-img-top mx-auto"
           alt="Laptop"
-          style={{ width: "300px", height: "300px" }}
+          style={{ width: "250px", height: "250px" }}
         />
 
         <div className="card-body">

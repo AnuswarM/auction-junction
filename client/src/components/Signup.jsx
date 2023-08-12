@@ -23,7 +23,7 @@ function Signup() {
     axios
       .post("/signup", user)
       .then((response) => {
-        window.localStorage.setItem("isLoggedIn", true);
+        window.sessionStorage.setItem("isLoggedIn", true);
         navigate("/bidandbuy");
       })
       .catch((err) => console.log(err));

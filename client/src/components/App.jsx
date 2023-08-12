@@ -8,6 +8,7 @@ import BidAndBuy from "./BidAndBuy";
 import Footer from "./Footer";
 import { Routes, Route } from "react-router-dom";
 import Profile from "./Profile";
+import ProductDetails from "./ProductDetails";
 
 const Routing = () => {
   return (
@@ -18,6 +19,7 @@ const Routing = () => {
 
       <Route path="/addproduct" element={<AddProduct />} />
       <Route path="/bidandbuy" element={<BidAndBuy />} />
+      <Route path="/products/:id" element={<ProductDetails />} />
 
       <Route path="/profile" element={<Profile />} />
     </Routes>

@@ -23,7 +23,7 @@ function Login() {
       .post("/signin", user)
       .then((response) => {
         if (response.status === 200) {
-          window.localStorage.setItem("isLoggedIn", true);
+          window.sessionStorage.setItem("isLoggedIn", true);
           navigate("/bidandbuy");
         }
       })
