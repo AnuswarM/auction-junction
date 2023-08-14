@@ -26,7 +26,7 @@ function Navbar() {
               <Link className="nav-link" to="/addproduct">
                 Sell Products
               </Link>
-              <Link className="nav-link" to="/">
+              <Link className="nav-link" to="/userproducts">
                 Your Products
               </Link>
               <Link className="nav-link" to="/bidandbuy ">

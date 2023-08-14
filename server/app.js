@@ -139,11 +139,27 @@ app.route("/products/:id").get((req, res) => {
     .catch((err) => console.log(err));
 });
 
+app.route("/userproducts").get((req, res) => {
+  if (req.isAuthenticated()) {
+    const userId = req.user._id;
+
+    Product.find({ seller: userId })
+      .then((response) => res.status(200).send(response))
+      .catch((err) => console.log(err));
+  } else {
+    res.status(401).send("No user data found. Login again.");
+  }
+});
+
 app.route("/logout").get((req, res) => {
   req.logout((err) => {
     if (err) console.log(err);
     else res.status(200).send("Logged Out Successfully.");
   });
+});
+
+app.route("/currentUserId").get((req, res) => {
+  res.status(200).send(req.user._id);
 });
 
 app.route("/isAuthenticated").get((req, res) => {

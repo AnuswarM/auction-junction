@@ -3,13 +3,21 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 
 function ProductDetails() {
-  // const location = useLocation();
   const id = useParams().id;
   const [product, setProduct] = useState({});
+  const [seller, setSeller] = useState({ username: "" });
+  const [userId, setUserId] = useState("");
   const [images, setImages] = useState([]);
   const [date, setDate] = useState(new Date());
   const [readableDate, setReadableDate] = useState("");
   const [bid, setBid] = useState(0);
+
+  useEffect(() => {
+    axios
+      .get("/currentUserId")
+      .then((response) => setUserId(response.data))
+      .catch((err) => console.log(err));
+  }, []);
 
   useEffect(() => {
     console.log(id);
@@ -19,16 +27,14 @@ function ProductDetails() {
       .then((response) => {
         if (response.status === 200) {
           setProduct(response.data);
+          setSeller(response.data.seller);
+          setBid(response.data.startingBid);
           setDate(response.data.bidEnd);
           setImages(response.data.images);
         } else console.log(response);
       })
       .catch((err) => console.log(err));
   }, [id]);
-
-  useEffect(() => {
-    setBid(product.startingBid);
-  }, [product]);
 
   useEffect(() => {
     let dt = new Date(date);
@@ -122,44 +128,40 @@ function ProductDetails() {
             </dd>
 
             <dt className="col-3">Seller:</dt>
-            <dd className="col-9">
-              {product.seller ? product.seller.username : ""}
-            </dd>
+            <dd className="col-9">{seller.username}</dd>
 
             <dt className="col-3">Phone:</dt>
-            <dd className="col-9">
-              {product.seller ? product.seller.phone : ""}
-            </dd>
+            <dd className="col-9">{seller.phone}</dd>
 
             <dt className="col-3">Email:</dt>
-            <dd className="col-9">
-              {product.seller ? product.seller.email : ""}
-            </dd>
+            <dd className="col-9">{seller.email}</dd>
 
             <dt className="col-3">Bid ends by:</dt>
             <dd className="col-9">{readableDate}</dd>
 
             <hr />
 
-            <form onSubmit={handleBid}>
-              <div className="form-group">
-                <label htmlFor="bid">Your Bid:</label>
-                <input
-                  type="number"
-                  className="form-control w-25"
-                  id="bid"
-                  min={product.startingBid}
-                  value={bid}
-                  onChange={(event) => setBid(event.target.value)}
-                />
-              </div>
-              <button
-                type="submit"
-                className="btn btn-primary btn-lg mt-2 w-25"
-              >
-                Place Bid
-              </button>
-            </form>
+            {userId !== seller._id && (
+              <form onSubmit={handleBid}>
+                <div className="form-group">
+                  <label htmlFor="bid">Your Bid:</label>
+                  <input
+                    type="number"
+                    className="form-control w-25"
+                    id="bid"
+                    min={product.startingBid}
+                    value={bid}
+                    onChange={(event) => setBid(event.target.value)}
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="btn btn-primary btn-lg mt-2 w-25"
+                >
+                  Place Bid
+                </button>
+              </form>
+            )}
           </div>
         </main>
       </div>

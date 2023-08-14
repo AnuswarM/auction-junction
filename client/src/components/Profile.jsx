@@ -3,7 +3,6 @@ import React from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 
 function Profile() {
-  const userLoggedIn = window.sessionStorage.getItem("isLoggedIn");
   const navigate = useNavigate();
 
   function handleLogOut() {
@@ -15,7 +14,8 @@ function Profile() {
     });
   }
 
-  if (userLoggedIn) return <button onClick={handleLogOut}> LOGOUT </button>;
+  if (window.sessionStorage.getItem("isLoggedIn") === "true")
+    return <button onClick={handleLogOut}> LOGOUT </button>;
   else return <Navigate replace to="/login" />;
 }
 

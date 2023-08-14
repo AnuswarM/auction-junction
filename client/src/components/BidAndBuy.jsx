@@ -4,7 +4,6 @@ import axios from "axios";
 import Product from "./Product";
 
 function BidAndBuy() {
-  const userLoggedIn = window.sessionStorage.getItem("isLoggedIn");
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -14,7 +13,7 @@ function BidAndBuy() {
       .catch((err) => console.log(err));
   }, []);
 
-  if (userLoggedIn) {
+  if (window.sessionStorage.getItem("isLoggedIn") === 'true') {
     return (
       <div className="container py-5">
         <div className="row">

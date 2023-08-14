@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Navigate } from "react-router-dom";
 
 function AddProduct() {
-  const userLoggedIn = window.sessionStorage.getItem("isLoggedIn");
   const [product, setProduct] = useState({
     name: "",
     price: "",
@@ -57,7 +56,7 @@ function AddProduct() {
       .catch((err) => console.log(err));
   }
 
-  if (userLoggedIn)
+  if (window.sessionStorage.getItem("isLoggedIn") === "true") {
     return (
       <form className="container" onSubmit={handleAddProductSubmit}>
         <div className="row mb-4">
@@ -149,7 +148,7 @@ function AddProduct() {
         </button>
       </form>
     );
-  else return <Navigate replace to="/login" />;
+  } else return <Navigate replace to="/login" />;
 }
 
 export default AddProduct;
