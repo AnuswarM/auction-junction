@@ -31,13 +31,6 @@ const productSchema = new mongoose.Schema({
     type: mongoose.Schema.ObjectId,
     ref: "User",
   },
-  bids: [
-    {
-      bidder: { type: mongoose.Schema.ObjectId, ref: "User" },
-      bid: Number,
-      time: Date,
-    },
-  ],
 });
 
 const Product = new mongoose.model("Product", productSchema);

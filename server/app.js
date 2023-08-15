@@ -6,6 +6,7 @@ const passport = require("passport");
 const { User, userStrategy } = require("./models/userModel");
 const cloudinary = require("cloudinary");
 const { Product } = require("./models/productModel");
+const { Bid } = require("./models/bid");
 
 require("dotenv").config();
 
@@ -149,6 +150,34 @@ app.route("/userproducts").get((req, res) => {
   } else {
     res.status(401).send("No user data found. Login again.");
   }
+});
+
+app.route("/placeBid").post((req, res) => {
+  const productId = req.body.productId;
+  const bidAmount = req.body.bid;
+  const userId = req.user._id;
+
+  Bid.findOne({ product: productId, bidder: userId })
+    .then(async (bid) => {
+      if (bid) {
+        bid.amount = bidAmount;
+
+        await bid.save();
+
+        res.status(200).send("Bid updated Successfully");
+      } else {
+        const newBid = new Bid({
+          amount: bidAmount,
+          product: productId,
+          bidder: userId,
+        });
+
+        await newBid.save();
+
+        res.status(200).send("Bid placed successfully.");
+      }
+    })
+    .catch((err) => console.log(err));
 });
 
 app.route("/logout").get((req, res) => {

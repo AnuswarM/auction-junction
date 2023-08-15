@@ -5,7 +5,7 @@ import { useLocation, useParams } from "react-router-dom";
 function ProductDetails() {
   const id = useParams().id;
   const [product, setProduct] = useState({});
-  const [seller, setSeller] = useState({ username: "" });
+  const [seller, setSeller] = useState({});
   const [userId, setUserId] = useState("");
   const [images, setImages] = useState([]);
   const [date, setDate] = useState(new Date());
@@ -45,6 +45,19 @@ function ProductDetails() {
 
   function handleBid() {
     console.log("handling bid");
+    axios
+      .post(
+        "/placeBid",
+        {
+          productId: product,
+          bid: bid,
+        },
+        {
+          withCredentials: true,
+        }
+      )
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
   }
 
   return (
