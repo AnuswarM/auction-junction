@@ -180,6 +180,15 @@ app.route("/placeBid").post((req, res) => {
     .catch((err) => console.log(err));
 });
 
+app.route("/userBids").get((req, res) => {
+  const userId = req.user._id;
+
+  Bid.find({ bidder: userId })
+    .populate("product")
+    .then((bids) => res.status(200).send(bids))
+    .catch((err) => console.log(err));
+});
+
 app.route("/logout").get((req, res) => {
   req.logout((err) => {
     if (err) console.log(err);

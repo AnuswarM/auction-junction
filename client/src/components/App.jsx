@@ -11,6 +11,7 @@ import Profile from "./Profile";
 import ProductDetails from "./ProductDetails";
 import Userproducts from "./UserProducts";
 import axios from "axios";
+import BidStatus from "./BidStatus";
 
 const Routing = () => {
   return (
@@ -23,6 +24,7 @@ const Routing = () => {
       <Route path="/bidandbuy" element={<BidAndBuy />} />
       <Route path="/products/:id" element={<ProductDetails />} />
       <Route path="/userproducts" element={<Userproducts />} />
+      <Route path="/bidstatus" element={<BidStatus />} />
 
       <Route path="/profile" element={<Profile />} />
     </Routes>
