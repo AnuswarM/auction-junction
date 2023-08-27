@@ -5,7 +5,7 @@ function Footer() {
   return (
     <div className="container footer">
       <footer className="py-3 my-4">
-        <ul className="nav justify-content-center pb-3 mb-3">
+        <ul className="nav justify-content-center">
           <li className="nav-item">
             <Link to="#" className="nav-link px-2 text-muted">
               Home

@@ -35,7 +35,7 @@ function Navbar() {
               <Link className="nav-link" to="/bidstatus">
                 Bid Status
               </Link>
-              <Link className="nav-link" to="/">
+              <Link className="nav-link" to="/about">
                 About
               </Link>
               <Link className="nav-link" to="/profile">

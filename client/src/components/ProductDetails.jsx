@@ -1,8 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function ProductDetails() {
+  const navigate = useNavigate();
   const id = useParams().id;
   const [product, setProduct] = useState({});
   const [seller, setSeller] = useState({});
@@ -56,7 +57,10 @@ function ProductDetails() {
           withCredentials: true,
         }
       )
-      .then((response) => console.log(response))
+      .then((response) => {
+        console.log(response);
+        navigate("/bidstatus");
+      })
       .catch((err) => console.log(err));
   }
 

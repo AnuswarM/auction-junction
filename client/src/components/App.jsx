@@ -12,6 +12,7 @@ import ProductDetails from "./ProductDetails";
 import Userproducts from "./UserProducts";
 import axios from "axios";
 import BidStatus from "./BidStatus";
+import About from "./About";
 
 const Routing = () => {
   return (
@@ -26,6 +27,7 @@ const Routing = () => {
       <Route path="/userproducts" element={<Userproducts />} />
       <Route path="/bidstatus" element={<BidStatus />} />
 
+      <Route path="/about" element={<About />} />
       <Route path="/profile" element={<Profile />} />
     </Routes>
   );
@@ -35,7 +37,9 @@ function App() {
   useEffect(() => {
     axios
       .get("/isAuthenticated")
-      .then((response) => window.sessionStorage.setItem("isLoggedIn", response.data))
+      .then((response) =>
+        window.sessionStorage.setItem("isLoggedIn", response.data)
+      )
       .catch((err) => console.log(err));
   }, []);
 
