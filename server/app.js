@@ -196,8 +196,42 @@ app.route("/logout").get((req, res) => {
   });
 });
 
-app.route("/currentUserId").get((req, res) => {
-  res.status(200).send(req.user._id);
+app
+  .route("/userData")
+  .get((req, res) => {
+    const userId = req.user._id;
+
+    User.findOne({ _id: userId })
+      .then((user) => {
+        res.status(200).send(user);
+      })
+      .catch((err) => console.log(err));
+  })
+  .patch((req, res) => {
+    const userId = req.user._id;
+    const newUserData = {
+      username: req.body.username,
+      email: req.body.email,
+      phone: req.body.phone,
+    };
+
+    User.findOneAndUpdate({ _id: userId }, newUserData)
+      .then(() => res.status(200).send("Successfully Updated."))
+      .catch((err) => console.log(err));
+  });
+
+app.route("/changePassword").post((req, res) => {
+  const userId = req.user._id;
+
+  User.findOne({ _id: userId }).then((user) => {
+    user
+      .setPassword(req.body.password)
+      .then(async () => {
+        await user.save();
+        res.status(200).send("Succesfully Changed.");
+      })
+      .catch((err) => console.log(err));
+  });
 });
 
 app.route("/isAuthenticated").get((req, res) => {

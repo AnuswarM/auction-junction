@@ -175,3 +175,7 @@ footer .nav-link {
   padding-bottom: 0;
   color: #1B262C;
 }
+
+.edit-profile-input {
+  width: 100%;
+}
