@@ -51,7 +51,11 @@ function Profile() {
     event.preventDefault();
     axios
       .post("/changePassword", { password: password })
-      .then((response) => console.log(response))
+      .then((response) => {
+        console.log(response);
+        window.sessionStorage.removeItem("isLoggedIn");
+        navigate("/login");
+      })
       .catch((err) => console.log(err));
   }
 
